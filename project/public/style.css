@@ -1,0 +1,6 @@
+/* Add the CSS from the previous examples here. Key styles include: */
+.seat { /* ... */ }
+.seat.present { background-color: #28a745; color: white; } /* Green for present */
+.seat.out-excused { background-color: #ffc107; } /* Yellow for excused timer */
+.seat.out-unexcused { background-color: #dc3545; color: white; } /* Red for unexcused timer */
+/* ... other styles */
