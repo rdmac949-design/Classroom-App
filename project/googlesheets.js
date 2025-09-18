@@ -1,12 +1,16 @@
 const { google } = require('googleapis');
 
-// Authentication
+// NEW Authentication using Environment Variables
+const creds = JSON.parse(process.env.GOOGLE_CREDENTIALS);
 const auth = new google.auth.GoogleAuth({
-    keyFile: 'path/to/your/credentials.json',
+    credentials: {
+        client_email: creds.client_email,
+        private_key: creds.private_key,
+    },
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 const sheets = google.sheets({ version: 'v4', auth });
-const spreadsheetId = 'YOUR_SPREADSHEET_ID';
+const spreadsheetId = process.env.SPREADSHEET_ID;
 
 async function getStudentRoster() {
     // ... Code to read the student list and seating chart layout
@@ -24,5 +28,6 @@ async function startTimerLog(studentId, type) {
 async function stopTimerLog(studentId) {
     // ... Code to find the start time and calculate the duration, then log it
 }
+
 
 module.exports = { getStudentRoster, markStudentPresent, startTimerLog, stopTimerLog };
